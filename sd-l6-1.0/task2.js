@@ -3,11 +3,11 @@
 import { getServerURL} from "./task1.js";
 
 export async function listUsers() {
-  // Haz una solicitud HTTP GET al servidor para obtener la lista de usuarios
+  // Se hace una solicitud al servidor para obtener la lista de usuarios
   const url = getServerURL();
   const response = await fetch(url+"/users");
 
-  // Convierte la respuesta en un objeto JavaScript, en este caso, un array de usuarios
+  // Se obtiene la respuesta y se convierte en array (info de usuarios)
   const users = await response.json();
 
   // Recorre el array de usuarios y crea un string formateado para cada uno
