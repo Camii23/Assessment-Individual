@@ -14,7 +14,7 @@ export async function addUser(user) {
 
   // Se crea un nuevo objeto usuario
   const newUser = {
-    id: String(newId),
+    id: newUderId.toString(),
     first_name: firstName,
     last_name: lastName,
     email: email
@@ -27,10 +27,14 @@ export async function addUser(user) {
     body: JSON.stringify(newUser)
   });
 
+  const addUser = await addUserResponse.json();
+  const output = `{
+  id: ${Number(addUser.id)},
+  first_name: '${addUser.first_name}',
+  last_name: '${addUser.last_name}',
+  email: '${addUser.email}'
+}`;
+
   // imprimir si la adicion del nuevo usuario fue exitoso
-  if (addUserResponse.ok) {
-    console.log(`User added successfully: ${newUser.first_name} ${newUser.last_name}`);
-  } else {
-    console.error(`Error adding user: ${addUserResponse.status}`);
-  }
+  console.log(output)
 }
